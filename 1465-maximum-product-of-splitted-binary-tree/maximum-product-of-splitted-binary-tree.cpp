@@ -12,12 +12,12 @@
 class Solution {
 public:
 long long ans=0;
-void preorder(TreeNode* node,long long &tot)
+void inorder(TreeNode* node,long long &tot)
 {
     if(node==NULL)return;
-    preorder(node->left,tot);
+    inorder(node->left,tot);
     tot+=node->val;
-    preorder(node->right,tot);
+    inorder(node->right,tot);
 }
 int traver(TreeNode* node,long long tot)
 {
@@ -30,7 +30,7 @@ int traver(TreeNode* node,long long tot)
 }
     int maxProduct(TreeNode* root) {
         long long tot=0;
-        preorder(root,tot);
+        inorder(root,tot);
         traver(root,tot);
         return ans%1000000007;
     }
