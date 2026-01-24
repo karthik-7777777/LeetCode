@@ -4,7 +4,6 @@ public:
         int sum=0,ans=0;
         int l=0,r=0;
         while(r<arr.size()){
-            cout << l <<" " << r << endl;
             if(r<k){
                 sum+=arr[r];
                 r++;
