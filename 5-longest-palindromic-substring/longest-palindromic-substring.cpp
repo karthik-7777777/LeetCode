@@ -1,5 +1,6 @@
 class Solution {
 int palindromechk(string s,int st,int en){
+    cout << en << "------" << st <<endl;
     while(st>=0 && en<s.size()){
         if(s[st]==s[en]){
             st--;
@@ -7,7 +8,9 @@ int palindromechk(string s,int st,int en){
         }
         else break;
     }
-    return en-st-1;
+    cout << en << " " << st <<endl;
+    int l=en-st;
+    return l-1;
 }
 public:
     string longestPalindrome(string s) {
