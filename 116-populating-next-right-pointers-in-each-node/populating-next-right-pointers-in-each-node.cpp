@@ -35,7 +35,6 @@ public:
                 if(x->left)q.push(x->left);
                 if(x->right)q.push(x->right);
             }
-            // nn->next=NULL;
         }
         return root;
     }
