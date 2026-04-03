@@ -29,7 +29,6 @@ public:
         int ans=INT_MIN;
         while(x){
             ans=max(ans,head->val+x->val);
-            cout << head->val << " " << x->val << endl;
             head=head->next;
             x=x->next;
         }
