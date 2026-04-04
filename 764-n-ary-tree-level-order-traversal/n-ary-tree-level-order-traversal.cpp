@@ -32,10 +32,8 @@ public:
                 Node* nod=q.front();
                 q.pop();
                 lev.push_back(nod->val);
-                if(nod->children.size()){
-                    for(int j=0;j<nod->children.size();j++){
-                        q.push(nod->children[j]);
-                    }
+                for(int j=0;j<nod->children.size();j++){
+                    q.push(nod->children[j]);
                 }
             }
             tretrav.push_back(lev);
