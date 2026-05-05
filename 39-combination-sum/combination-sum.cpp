@@ -1,22 +1,27 @@
 class Solution {
 public:
-void comb(vector<int>& candidates, int target,int idx,int sum,vector<int>& com,vector<vector<int>>& ans){
-    if(target==sum){
-        ans.push_back(com);
+void rec(set<vector<int>>& ans,vector<int>& can,vector<int>& t,int sum,int target){
+    if(sum==target){
+        vector<int>arr;
+        arr=t;
+        sort(arr.begin(),arr.end());
+        ans.insert(arr);
         return;
     }
-    if(sum > target || idx >= candidates.size()){
+    if(sum>target){
         return;
     }
-    com.push_back(candidates[idx]);
-    comb(candidates,target,idx,sum+candidates[idx],com,ans);
-    com.pop_back();
-    comb(candidates,target,idx+1,sum,com,ans);
+    for(int i=0;i<can.size();i++){
+        t.push_back(can[i]);
+        rec(ans,can,t,sum+can[i],target);
+         t.pop_back();
+    }
 }
-    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        vector<vector<int>>ans;
-        vector<int>com;
-        comb(candidates,target,0,0,com,ans);
-        return ans;
+    vector<vector<int>> combinationSum(vector<int>& can, int target) {
+        set<vector<int>>ans;
+        vector<int>t;
+        rec(ans,can,t,0,target);
+        vector<vector<int>>anss(ans.begin(),ans.end());
+        return anss;
     }
 };
