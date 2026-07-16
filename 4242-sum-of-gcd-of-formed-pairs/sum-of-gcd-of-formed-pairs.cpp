@@ -1,5 +1,13 @@
 class Solution {
 public:
+int GCD(int n1,int n2){
+    while(n2!=0){
+        int temp=n1%n2;
+        n1=n2;
+        n2=temp;
+    }
+    return n1;
+}
     long long gcdSum(vector<int>& nums) {
         int n=nums.size();
         vector<int>maxi(n);
@@ -7,12 +15,12 @@ public:
         for(int i=1;i<n;i++)maxi[i]=max(maxi[i-1],nums[i]);
         vector<int>preGcd(n);
         for(int i=0;i<n;i++){
-            preGcd[i]=__gcd(nums[i],maxi[i]);
+            preGcd[i]=GCD(maxi[i],nums[i]);
         }
         sort(preGcd.begin(),preGcd.end());
         int st=0,en=n-1;
         long long ans=0;
-        while(st<en)ans+=__gcd(preGcd[st++],preGcd[en--]);
+        while(st<en)ans+=GCD(preGcd[en--],preGcd[st++]);
         return ans;
     }
 };
